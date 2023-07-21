@@ -36,6 +36,18 @@ function setup(){
 
     bird = new Bird(100,100);
 
+
+    var options={
+
+        bodyA:bird.body,
+        bodyB:clog.body,
+        stiffness:0.04,
+        length:100
+    }
+
+    var chain= Matter.Constraint.create(options);
+    World.add(world,chain)
+
 }
 
 function draw(){
@@ -63,4 +75,5 @@ function draw(){
     platform.display();
 
     clog.display()
+    line(bird.body.position.x,bird.body.position.y,clog.body.position.x,clog.body.position.y)
 }
